@@ -22,10 +22,11 @@
     width: 40%;
 }
 
-.not-found h3 a{
+.not-found a{
     text-decoration: none;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: black;
     padding: 15px;
     border-radius: 5px;    

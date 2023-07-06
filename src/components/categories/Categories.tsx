@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import "../styles.css"
 import CardCategorie from "./CardCategorie";
+import { API_URL } from "../../consts/consts";
+
+
 
 interface Categories {
     id: number;
@@ -12,11 +15,10 @@ interface Categories {
 
 function Categories(){
 
-    const [categories, setCategories] = useState<Categories[]>([])
-    const URL = "https://api.escuelajs.co/api/v1/categories"
+    const [categories, setCategories] = useState<Categories[]>([])    
 
     useEffect(() => {
-        requestCategories(URL)
+        requestCategories(`${API_URL}/categories`)
     }, [])
 
     async function requestCategories(url: string){
