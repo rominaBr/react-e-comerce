@@ -1,0 +1,18 @@
+.container-card{
+    background-color: black;   
+    margin: 5px;     
+    border-radius: 4px;
+}
+
+.card{
+    margin: 10px;   
+    
+}
+.card img{
+    width: 250px;
+}
+
+.container-card h3{
+    color: white;
+    padding-left: 15px;    
+}
