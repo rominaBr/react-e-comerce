@@ -35,9 +35,7 @@ function Categories(){
     const { data, status, error}: { data: any, status: string, error: any } = useQuery(
         QUERY_KEY_CATEGORIES,
         fetchCategories
-    ) 
-
-    console.log(error);
+    )     
 
     return(
         <div className="container">
