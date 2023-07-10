@@ -8,25 +8,30 @@ import Cart from './components/cart/Cart'
 import ProductDetail from './components/products/ProductDetail'
 import Login from './components/login/Login'
 import Register from './components/login/Register'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient();
 
 function App() {
   
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layaout/>}>
-            <Route path='/' element={<Home/>} />
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
-            <Route path='/categories' element={<Categories />}/>
-            <Route path='/products' element={<Products />}/>
-            <Route path='/products/:id' element={<ProductDetail/>}/>
-            <Route path='/cart-detail' element={<Cart/>}/> 
-            <Route path='*' element={<NotFound/>}/>           
-          </Route>          
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client= {queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Layaout/>}>
+              <Route path='/' element={<Home/>} />
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/register' element={<Register/>}/>
+              <Route path='/categories' element={<Categories />}/>
+              <Route path='/products' element={<Products />}/>
+              <Route path='/products/:id' element={<ProductDetail/>}/>
+              <Route path='/cart-detail' element={<Cart/>}/> 
+              <Route path='*' element={<NotFound/>}/>           
+            </Route>          
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </>
   )
 }

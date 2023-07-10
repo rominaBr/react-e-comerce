@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
 import "../styles.css"
 import CardCategorie from "./CardCategorie";
 import { API_URL } from "../../consts/consts";
-
+import Loader from "../loader/Loader";
+import { useQuery } from "react-query";
 
 
 interface Categories {
@@ -13,40 +13,44 @@ interface Categories {
     updatedAt?: string;
 }
 
-function Categories(){
+const QUERY_KEY_CATEGORIES = "categories";
 
-    const [categories, setCategories] = useState<Categories[]>([])    
+const fetchCategories = async () => {
+    const res = await fetch(`${API_URL}/categories`)
+    const json = await res.json();
 
-    useEffect(() => {
-        requestCategories(`${API_URL}/categories`)
-    }, [])
-
-    async function requestCategories(url: string){
-        try{
-            const res = await fetch(url);
-            const json = await res.json();
-
-            setCategories(json)
-            
-        }
-        catch(e)
-        {
-            console.log(e)
-        }
+    if (res.status === 404) {
+        throw new Error("Categorías no encontradas");
+    } else if (!res.ok) {
+        throw new Error("Error en la solicitud");
     }
+    
+    return json
+
+}
+
+function Categories(){
+      
+
+    const { data, status, error}: { data: any, status: string, error: any } = useQuery(
+        QUERY_KEY_CATEGORIES,
+        fetchCategories
+    ) 
+
+    console.log(error);
 
     return(
-        <div className="container">            
-            {categories ? (
-                categories.map((cat) => {
+        <div className="container">
+            {status === "loading" && <Loader/>}                
+            {status === "error" && <h1>Error: {error.message}</h1>}      
+            {status === "success" &&                
+                data.map((cat: Categories) => {
                     return(
                         <CardCategorie id={cat.id} name={cat.name} image={cat.image} />
                     )
                 })              
 
-            ):(
-                <h1>Cargando...</h1>
-            )}
+           }
         </div>
     )
 
