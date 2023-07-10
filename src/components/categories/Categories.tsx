@@ -30,6 +30,7 @@ const fetchCategories = async () => {
 }
 
 function Categories(){
+    
       
 
     const { data, status, error}: { data: any, status: string, error: any } = useQuery(
