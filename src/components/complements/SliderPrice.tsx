@@ -4,14 +4,11 @@ import "./styles.css"
 type SliderPriceProps = {
     onChangeRange: (min: number, max: number) => void;
 };
-
-
   
 
 function SliderPrice({onChangeRange}: SliderPriceProps ){
 
     const [priceRange, setPriceRange] = useState({ min: 0, max: 10000})
- 
 
 
     const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +77,4 @@ function SliderPrice({onChangeRange}: SliderPriceProps ){
 
 export default SliderPrice
 
-function onChangeRange(minValue: number, max: number) {
-    throw new Error("Function not implemented.");
-}
+
