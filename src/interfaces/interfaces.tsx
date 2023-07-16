@@ -18,11 +18,11 @@ export interface ProductsInterface{
 }
 
 export interface User{
-    id: number;
+    id?: number;
     email: string;
     password: string;
     name: string;
-    role: string;
+    role?: string;
     avatar: string;
     creationAt?: string;
     updateAt?: string;
