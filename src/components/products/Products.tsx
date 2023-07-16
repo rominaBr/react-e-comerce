@@ -12,7 +12,7 @@ import SliderPrice from "../complements/SliderPrice";
 function Products(){   
        
 
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);      
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);  
     const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
 
 
