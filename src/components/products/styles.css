@@ -1,0 +1,281 @@
+.categories{
+    margin-top: 100px;    
+}
+
+.container-products{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;       
+}
+
+.categories-product{
+    margin-top: 200px; 
+    width: 25%;  
+}
+
+.column{
+    width: 75%;
+}
+
+.container-card-product{
+    background-color: black;   
+    margin: 5px;     
+    border-radius: 4px;
+    width: 270px;
+    height: 400px; 
+    
+}
+
+a{
+    text-decoration: none;  
+}
+
+
+.card-product{
+    margin: 10px;   
+    padding-top: 10px;   
+}
+
+
+.card-product img{
+    width: 250px;    
+}
+
+.description-product{
+    font-size: medium; 
+}
+
+.container-all{
+    position: relative;
+    max-width: 2000px;
+    width: 100%;
+    border-radius: 6px;
+    max-height: 100vh;
+    overflow: hidden;    
+}
+
+.slide{
+    display: flex;
+    transform: translate3d(0, 0, 0);
+    transition: all 600ms;
+    animation-name: autoplay;
+    animation-duration: 6.5s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+.item-slide{
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-grow: 0;
+    max-width: 100%;
+}
+
+.pagination{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.pagination-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid white;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgb(255, 255, 255, 0.5);
+    margin: 0 10px;    
+    text-align: center;
+    transition: all 300ms;
+}
+
+.pagination-item:hover{
+    transform: scale(2);
+}
+
+.pagination-item img{
+    display: inline-block;
+    max-width: none;
+    height: 100%;
+    transform: scale(1);
+    opacity: 0;
+    transition: all 300ms;
+}
+
+.pagination-item:hover img{
+    opacity: 1;
+    transform: scale(1);
+}
+
+input[id$="-0"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(0, 0, 0);    
+}
+
+input[id$="-0"]:checked ~ .pagination .pagination-item[for$="-0"]{
+    background: #fff;  
+}
+
+input[id$="-1"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 1), 0, 0);    
+}
+
+input[id$="-1"]:checked ~ .pagination .pagination-item[for$="-1"]{
+    background: #fff;  
+}
+
+input[id$="-2"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100% * 2), 0, 0);    
+}
+
+input[id$="-2"]:checked ~ .pagination .pagination-item[for$="-2"]{
+    background: #fff;  
+}
+
+.container-card-product h3{
+    padding: 10px;
+    font-size: 20px;
+    color:white;
+}
+
+.container-card-product h4{
+    color:white;
+}
+
+
+
+.cardProductDetail{
+    width: 1500px;
+}
+
+.cardProductDetail .images{
+   
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: center;
+   
+}
+
+.cardProductDetail .images img{
+    width: 300px;
+    margin: 20px;
+}
+
+
+.title{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;   
+    
+}
+
+.cant {
+    display: flex;
+    width: 100px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.cant button{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.trash{
+    display: flex;
+    width: 200px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.categorie{
+    background-color: rgb(0, 0, 0);
+    margin-left: 12px;
+    color: white;
+    align-content: center;
+    padding: 8px;
+    border-radius: 7px;
+    height: 30px;    
+}
+
+.product-datail h3{
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+input[type="checkbox"]{
+    display:none;
+}
+  
+input[type="checkbox"]:hover + label:before{
+    opacity: .5;
+}
+  
+.checkbox{
+    display:inline-block;
+    position:relative;
+    padding-left:40px;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #111;
+    font-weight: 600;
+}
+  
+.checkbox:before{
+    z-index:15;
+    content: '';
+    position:absolute;
+    left:0;
+    top: 6px;
+    transition:all 0.3s ease;
+    cursor:pointer;
+    width:20px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #444;
+    height:20px;
+}
+
+input[type="checkbox"]:checked + label{
+    color:#000;
+}
+  
+input[type="checkbox"]:checked +  label:before{
+    border-color: transparent;
+    border-left-color: #2ecc71;
+    border-bottom-color: #2ecc71;
+    transform:rotate(-50deg);
+    width:22px;
+    height:12px;
+    top: 3px;
+}
+
+.checkbox-container{
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 20px;
+}

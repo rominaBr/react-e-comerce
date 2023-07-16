@@ -9,6 +9,7 @@ import ProductDetail from './components/products/ProductDetail'
 import Login from './components/login/Login'
 import Register from './components/login/Register'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import ProductsCategory from './components/products/ProductsCategory'
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function App() {
               <Route path='/register' element={<Register/>}/>
               <Route path='/categories' element={<Categories />}/>
               <Route path='/products' element={<Products />}/>
+              <Route path='/products/categorie/:id' element={<ProductsCategory />}/>
               <Route path='/products/:id' element={<ProductDetail/>}/>
               <Route path='/cart-detail' element={<Cart/>}/> 
               <Route path='*' element={<NotFound/>}/>           

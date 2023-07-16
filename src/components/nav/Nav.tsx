@@ -19,6 +19,7 @@ function Nav(){
                     <li><Link to={"/categories"}>Categorías</Link></li>
                     <li><Link to={"/products"}>Productos</Link></li>
                     <li><Link to={"/cart-detail"}><i className="fa-solid fa-cart-shopping"></i></Link></li>
+                    <li><Link to={"/login"}><i className="fa-solid fa-right-to-bracket"></i></Link></li>
                 </ul>
                 <label htmlFor="toggle" className="icon-bars">
                     <div className="line"></div>
