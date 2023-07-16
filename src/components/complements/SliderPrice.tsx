@@ -4,11 +4,13 @@ import "./styles.css"
 type SliderPriceProps = {
     onChangeRange: (min: number, max: number) => void;
 };
-  
+
+const min = 0;
+const max = 1000;
 
 function SliderPrice({onChangeRange}: SliderPriceProps ){
 
-    const [priceRange, setPriceRange] = useState({ min: 0, max: 10000})
+    const [priceRange, setPriceRange] = useState({ min, max})
 
 
     const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,12 +32,12 @@ function SliderPrice({onChangeRange}: SliderPriceProps ){
     };
 
     const calculateProgressWidth = () => {
-    const progressWidth = ((priceRange.max - priceRange.min) / (10000 - 0)) * 100;
+    const progressWidth = ((priceRange.max - priceRange.min) / (max - min)) * 100;
         return progressWidth;
     };
     
     const calculateLeftOffset = () => {
-    const leftOffset = ((priceRange.min - 0) / (10000 - 0)) * 100;
+    const leftOffset = ((priceRange.min - min) / (max - min)) * 100;
         return leftOffset;
     };
 
@@ -66,8 +68,8 @@ function SliderPrice({onChangeRange}: SliderPriceProps ){
                     </div>
                 </div>
                 <div className="range-input">
-                    <input type="range" className="range-min" min="0" max="10000" value={priceRange.min} step="100" onChange={handleMinChange}/>
-                    <input type="range" className="range-max" min="0" max="10000" value={priceRange.max} step="100" onChange={handleMaxChange}/>
+                    <input type="range" className="range-min" min={min} max={max} value={priceRange.min} step="100" onChange={handleMinChange}/>
+                    <input type="range" className="range-max" min={min} max={max} value={priceRange.max} step="100" onChange={handleMaxChange}/>
                 </div>
                         
             </div>            

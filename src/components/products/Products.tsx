@@ -12,7 +12,7 @@ import SliderPrice from "../complements/SliderPrice";
 function Products(){   
        
 
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);  
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);      
     const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
 
 
@@ -26,6 +26,7 @@ function Products(){
         fetchCategories
     )   
     
+    
     function handleCategoryChange(categoryId: string, checked: boolean) {
         setSelectedCategories((selectedCategories) => {
           if (checked) {
@@ -38,8 +39,7 @@ function Products(){
 
     function handleFilterChange(minValue: number, maxValue: number) {
         setPriceRange({ min: minValue, max: maxValue });
-    }      
-    
+    }    
 
     return(
         <div className="container-products">
@@ -72,7 +72,8 @@ function Products(){
                 {productStatus === "loading" && <Loader/>}                
                 {productStatus === "error" && <h1>Error: {productError?.message}</h1>}      
                 {productStatus === "success" &&                
-                    products
+                    products 
+                                       
                     .filter((prod: ProductsInterface) => {
                         
                         if (selectedCategories.length > 0 && !selectedCategories.includes(String(prod.category.id))) {
@@ -80,8 +81,7 @@ function Products(){
                         }
                         const productPrice = prod.price;
                         return productPrice >= priceRange.min && productPrice <= priceRange.max;
-                    })
-                    
+                    })                                          
                     .map((prod: ProductsInterface) => {
                         return(
                             <div key={prod.id}>
@@ -92,7 +92,7 @@ function Products(){
                                     images={prod.images} category={prod.category} />
                             </div>
                         )
-                    })              
+                    })                                            
 
                 }
 

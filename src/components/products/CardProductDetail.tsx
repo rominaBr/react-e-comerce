@@ -3,10 +3,13 @@ import { ProductsInterface } from "../../interfaces/interfaces";
 
 
 
+
 function CardProductDetail(prod: ProductsInterface){ 
 
     const [cant, setCant] = useState(0);
     const [price, setPrice] = useState(0);
+    
+    
 
     const addToCart = () =>{
         setPrice(price+prod.price)

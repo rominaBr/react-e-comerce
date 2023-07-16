@@ -10,6 +10,9 @@ import Login from './components/login/Login'
 import Register from './components/login/Register'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import ProductsCategory from './components/products/ProductsCategory'
+import AuthProvider from './auth/AuthContext'
+import ProductCreate from './components/complements/protected/products/ProductCreate'
+import RequireAuth from './auth/RequireAuth'
 
 const queryClient = new QueryClient();
 
@@ -19,19 +22,26 @@ function App() {
     <>
       <QueryClientProvider client= {queryClient}>
         <BrowserRouter>
+        <AuthProvider>
           <Routes>
             <Route element={<Layaout/>}>
-              <Route path='/' element={<Home/>} />
-              <Route path='/login' element={<Login/>}/>
-              <Route path='/register' element={<Register/>}/>
-              <Route path='/categories' element={<Categories />}/>
-              <Route path='/products' element={<Products />}/>
-              <Route path='/products/categorie/:id' element={<ProductsCategory />}/>
-              <Route path='/products/:id' element={<ProductDetail/>}/>
-              <Route path='/cart-detail' element={<Cart/>}/> 
-              <Route path='*' element={<NotFound/>}/>           
+              <Route path="/" element={<Home/>} />
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/register" element={<Register/>}/>
+              <Route path="/categories" element={<Categories />}/>
+              <Route path="/products" element={<Products />}/>
+              <Route path="/products/categorie/:id" element={<ProductsCategory />}/>
+              <Route path="/products/:id" element={<ProductDetail/>}/>
+              <Route path="/cart-detail" element={<Cart/>}/> 
+              <Route path="*" element={<NotFound/>}/>     
+              <Route path="/products/create" element={
+                <RequireAuth>
+                  <ProductCreate/>
+                </RequireAuth>
+              } />      
             </Route>          
           </Routes>
+          </AuthProvider>
         </BrowserRouter>
       </QueryClientProvider>
     </>
