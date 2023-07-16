@@ -5,7 +5,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { UserLoginData, UserLoginDataResponse } from "../../auth/AuthContext";
 import { API_URL } from "../../consts/consts";
-
+import "./styles.css"
 
 function Login(){
 
@@ -43,22 +43,33 @@ function Login(){
 
     return(
         <div className="container">
+            <div className="form">
+                <div className="wrapper">
+                    <form onSubmit={handleSubmit}>
+                        <h1>Iniciar Sesión</h1>
+                        <div className="input-box">
+                            <input type="email" name="email" placeholder="Email" required />
+                            <i className="fa-solid fa-envelope"></i>
+                        </div>
+                        <div className="input-box">
+                            <input type="password" name="password" placeholder="Contraseña" required/>
+                            <i className="fa-solid fa-lock"></i>
+                        </div>
+                        <button className="btn" type="submit">
+                            {signinMutation.isLoading ? 'Cargando...' : 'Login'}
+                        </button>
+                        
+                        <div className="register-link">
+                            <p>¿No tienes una cuenta?
+                                <Link to="/register">Registrarse</Link>
+                            </p>
+                        </div>
+                    </form> 
+                </div>
+                 
+            </div>
+                   
             
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email: <input name="email" type="email" />
-                </label>{' '}
-                <br />
-                <label>
-                    Password: <input name="password" type="password" />
-                </label>{' '}
-                <br />
-                <button type="submit">
-                    {signinMutation.isLoading ? 'Cargando...' : 'Login'}
-                </button>
-                
-            </form>
-            <Link to="/register">Registrarse</Link>
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { API_URL } from "../../consts/consts";
 import axios from "axios";
 import { User } from "../../interfaces/interfaces";
 import { UserLoginDataResponse } from "../../auth/AuthContext";
+import "./styles.css"
 
 function Register(){
 
@@ -49,28 +50,36 @@ function Register(){
 
     return(
         <div className="container">
-            <h2>Registrar Nuevo Usuario</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email: <input name="email" type="email" />
-                </label>{' '}
-                <br />
-                <label>
-                    Password: <input name="password" type="password" />
-                </label>{' '}
-                <br />
-                <label>
-                    Nombre: <input name="name" type="text" />
-                </label>{' '}
-                <br />
-                <label>
-                    URL Avatar: <input name="avatar" type="url" />
-                </label>{' '}
-                <br />
-                <button type="submit">
-                    Registrarse
-                </button>
-            </form>
+            <div className="form">
+                <div className="wrapper">
+                <h1>Registrar Nuevo Usuario</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-box">
+                       <input name="email" type="email" placeholder="Email" required/>
+                       <i className="fa-solid fa-envelope"></i>
+                    </div>
+                    
+                    <div className="input-box">
+                        <input name="password" type="password" placeholder="Contraseña" required/>
+                        <i className="fa-solid fa-lock"></i>
+                    </div>
+                    
+                    <div className="input-box">
+                        <input name="name" type="text" placeholder="Nombre" required/>
+                        <i className="fa-solid fa-user"></i>
+                    </div>
+                    
+                    <div className="input-box">
+                        <input name="avatar" type="url" placeholder="URL Avatar" required/>
+                        <i className="fa-solid fa-image"></i>
+                    </div>                 
+                    <button className="btn" type="submit">
+                        Registrarse
+                    </button>
+                </form>
+                </div>
+            </div>
+            
         </div>
     )
 }
