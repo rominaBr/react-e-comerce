@@ -51,8 +51,8 @@ function Register(){
     return(
         <div className="container">
             <div className="form">
-                <div className="wrapper">
-                <h1>Registrar Nuevo Usuario</h1>
+                <div className="wrapper-form">
+                <h2>Registrar Nuevo Usuario</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                        <input name="email" type="email" placeholder="Email" required/>

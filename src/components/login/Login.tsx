@@ -44,7 +44,7 @@ function Login(){
     return(
         <div className="container">
             <div className="form">
-                <div className="wrapper">
+                <div className="wrapper-form">
                     <form onSubmit={handleSubmit}>
                         <h1>Iniciar Sesión</h1>
                         <div className="input-box">
