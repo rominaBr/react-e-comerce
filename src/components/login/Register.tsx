@@ -5,6 +5,7 @@ import { useMutation } from "react-query";
 import { API_URL } from "../../consts/consts";
 import axios from "axios";
 import { User } from "../../interfaces/interfaces";
+import { UserLoginDataResponse } from "../../auth/AuthContext";
 
 function Register(){
 
