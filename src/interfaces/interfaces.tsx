@@ -27,3 +27,27 @@ export interface User{
     creationAt?: string;
     updateAt?: string;
 }
+
+export interface UserLogeado{
+    data: User;
+    isUserValid: boolean;
+}
+
+export interface AuthContextType {
+    login(userData: any, arg1: () => void): unknown;  
+    user: UserLoginDataResponse | null;
+    signin: (user: UserLoginDataResponse, callback: VoidFunction) => void;
+    signout: (callback: VoidFunction) => void;
+    userInfo: UserLogeado;
+    isLoading: boolean,
+    isError: boolean,
+}
+
+export interface UserLoginData {
+    email: string;
+    password: string;
+}
+  
+export interface UserLoginDataResponse { 
+    access_token: string;
+}

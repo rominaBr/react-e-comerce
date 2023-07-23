@@ -22,7 +22,7 @@ function Register(){
         {
             onSuccess: (data) => {
                 const userData: UserLoginDataResponse = {
-                    email: data.data.email,
+                    //email: data.data.email,
                     access_token: data.data.access_token,
                 };
                 auth.signin(userData, () => {

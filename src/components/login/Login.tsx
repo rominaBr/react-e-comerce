@@ -16,14 +16,16 @@ function Login(){
 
     const signinMutation = useMutation(
         (data: UserLoginData) => {
+            
             return axios.post(`${API_URL}/auth/login`, data)            
         },
         {
             onSuccess: (data) => {
                 const userData: UserLoginDataResponse = {
-                    email: data.data.email,
+                    //email: data.data.email,
                     access_token: data.data.access_token,
                 };
+                console.log(userData);
                 auth.signin(userData, () => {
                     navigate(from, { replace: true});
                 });

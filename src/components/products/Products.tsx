@@ -17,8 +17,8 @@ function Products(){
 
 
     const { data: products, status: productStatus, error: productError}: { data?: any, status: string, error: any } = useQuery(
-        QUERY_KEY_PRODUCTS,
-        fetchProducts
+        QUERY_KEY_PRODUCTS,        
+        () => fetchProducts("products")
     )   
 
     const { data: categories, status: categoriesStatus, error: categoriesError}: { data?: any, status: string, error: any } = useQuery(

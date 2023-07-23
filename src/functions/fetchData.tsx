@@ -1,4 +1,4 @@
-import { API_URL } from "../consts/consts";
+import { ACCESS_TOKEN, API_URL } from "../consts/consts";
 
 
 export const fetchCategories = async () => {
@@ -15,12 +15,12 @@ export const fetchCategories = async () => {
 
 }
 
-export const fetchProducts = async () => {
-    const res = await fetch(`${API_URL}/products`)
+export const fetchProducts = async (url: string) => {
+    const res = await fetch(`${API_URL}/${url}`)
     const json = await res.json();
 
     if (res.status === 404) {
-        throw new Error("Productos no encontradas");
+        throw new Error("Productos no encontrados");
     } else if (!res.ok) {
         throw new Error("Error en la solicitud");
     }
@@ -28,3 +28,26 @@ export const fetchProducts = async () => {
     return json
 
 }
+
+
+
+export const fetchUser = async (access_token?: string) => { 
+    if (access_token) { 
+        
+        const res = await fetch(`${API_URL}/auth/profile`, {
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+        if (!res.ok) {        
+            return { isUserValid: false };
+        }
+        const json = await res.json();
+        //console.log(json)
+        return { isUserValid: true, data: json };
+        } else {
+      
+        return { isUserValid: false };
+    }
+};
+  

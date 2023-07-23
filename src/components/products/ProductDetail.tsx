@@ -1,33 +1,22 @@
 import { useParams } from "react-router-dom"
 import "../styles.css"
-import { API_URL, QUERY_KEY_PRODUCTS } from "../../consts/consts";
+import { QUERY_KEY_PRODUCTS } from "../../consts/consts";
 import { useQuery } from "react-query";
 import Loader from "../loader/Loader";
 import CardProductDetail from "./CardProductDetail";
+import { fetchProducts } from "../../functions/fetchData";
 
 
 function ProductDetail(){
 
     const {id} = useParams();
-
-    const fetchProduct = async () => {
-        const res = await fetch(`${API_URL}/products/${id}`)
-        const json = await res.json();
+    const url = `products/${id}`
     
-        if (res.status === 404) {
-            throw new Error("Productos no encontradas");
-        } else if (!res.ok) {
-            throw new Error("Error en la solicitud");
-        }
-        
-        return json
-    
-    }
 
     const {data,status, error}:
     {data: any, status: string, error: any} = 
     useQuery([QUERY_KEY_PRODUCTS, id], () => {
-        return fetchProduct();
+        return fetchProducts(url);
       });
    
    
@@ -43,3 +32,4 @@ function ProductDetail(){
 }
 
 export default ProductDetail
+
