@@ -2,6 +2,7 @@
     background-color: black;   
     margin: 5px;     
     border-radius: 4px;
+    height: 350px;
 }
 
 .card{
@@ -10,9 +11,12 @@
 }
 .card img{
     width: 250px;
+    height: 270px;
 }
 
 .container-card h3{
     color: white;
     padding-left: 15px;    
 }
+
+
