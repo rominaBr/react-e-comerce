@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, API_URL } from "../consts/consts";
+import { API_URL } from "../consts/consts";
 
 
 export const fetchCategories = async () => {
