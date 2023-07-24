@@ -14,6 +14,9 @@ import AuthProvider from './auth/AuthContext'
 import ProductCreate from './components/complements/protected/products/ProductCreate'
 import RequireAuth from './auth/RequireAuth'
 import RequireAdmin from './auth/RequireAdmin'
+import CategoryCreate from './components/complements/protected/categories/CategoryCreate'
+import CategoryEdit from './components/complements/protected/categories/CategoryEdit'
+import ProductEdit from './components/complements/protected/products/ProductEdit'
 
 const queryClient = new QueryClient();
 
@@ -38,10 +41,31 @@ function App() {
                 <Route path="/products/create" element={
                   <RequireAuth>
                     <RequireAdmin>
-                      <ProductCreate/>
+                      <ProductCreate/>                      
+                    </RequireAdmin>                    
+                  </RequireAuth>
+                } /> 
+                <Route path="/categories/create" element={
+                  <RequireAuth>
+                    <RequireAdmin>
+                      <CategoryCreate/>
+                    </RequireAdmin>                    
+                  </RequireAuth>
+                } /> 
+                <Route path="/categories/edit/:id" element={
+                  <RequireAuth>
+                    <RequireAdmin>
+                      <CategoryEdit/>
                     </RequireAdmin>                    
                   </RequireAuth>
                 } />      
+                <Route path="/products/edit/:id" element={
+                  <RequireAuth>
+                    <RequireAdmin>
+                      <ProductEdit/>
+                    </RequireAdmin>                    
+                  </RequireAuth>
+                } />  
               </Route>          
             </Routes>
           </AuthProvider>

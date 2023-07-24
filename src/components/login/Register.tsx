@@ -4,8 +4,8 @@ import { useAuth } from "../../auth/useAuth";
 import { useMutation } from "react-query";
 import { API_URL } from "../../consts/consts";
 import axios from "axios";
-import { User } from "../../interfaces/interfaces";
-import { UserLoginDataResponse } from "../../auth/AuthContext";
+import { User, UserLoginDataResponse } from "../../interfaces/interfaces";
+
 import "./styles.css"
 
 function Register(){

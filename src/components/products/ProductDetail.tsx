@@ -17,7 +17,7 @@ function ProductDetail(){
     {data: any, status: string, error: any} = 
     useQuery([QUERY_KEY_PRODUCTS, id], () => {
         return fetchProducts(url);
-      });
+    });
    
    
     return(

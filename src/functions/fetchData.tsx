@@ -15,6 +15,19 @@ export const fetchCategories = async () => {
 
 }
 
+export const fetchCategory = async (url: string) => {
+    const res = await fetch(`${API_URL}/${url}`)
+    const json = await res.json();
+
+    if (res.status === 404) {
+        throw new Error("Categorías no encontradas");
+    } else if (!res.ok) {
+        throw new Error("Error en la solicitud");
+    }
+    return json
+
+}
+
 export const fetchProducts = async (url: string) => {
     const res = await fetch(`${API_URL}/${url}`)
     const json = await res.json();
@@ -43,7 +56,7 @@ export const fetchUser = async (access_token?: string) => {
             return { isUserValid: false };
         }
         const json = await res.json();
-        //console.log(json)
+        
         return { isUserValid: true, data: json };
         } else {
       
