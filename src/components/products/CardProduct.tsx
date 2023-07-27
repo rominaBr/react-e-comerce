@@ -70,7 +70,7 @@ function CardProduct(products: ProductsInterface){
                         
                         <Link to={`/products/${products.id}`}>                            
                             <h3>{products.title}</h3>
-                            <h4>{products.category.name}</h4>
+                            <h4>{products.category?.name}</h4>
                             <h4>${products.price}</h4>
                         </Link>  
                     </div>

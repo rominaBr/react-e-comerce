@@ -40,10 +40,10 @@ function ProductCreate(){
 
         const formData = new FormData(event.currentTarget);
         const title = formData.get("title") as string;
-        const price = parseInt(formData.get("price") ?? '0', 10);
+        const price = parseInt(formData.get("price") as string, 10) || 0;
         const description = formData.get("description") as string;
-        const categoryId = formData.get("categoryId") as string;
-        const imagesFormData = formData.getAll("image");
+        const categoryId = parseInt(formData.get("categoryId") as string);
+        const imagesFormData = formData.getAll("image") as string[];
         const images: string[] = imagesFormData.length > 0 ? imagesFormData : ["https://placehold.co/300x300/EEE/31343C"];
         
         const newProduct: ProductsInterface = {
@@ -77,5 +77,3 @@ function ProductCreate(){
 }
 
 export default ProductCreate
-
-

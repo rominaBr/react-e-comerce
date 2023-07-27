@@ -7,14 +7,15 @@ export interface CategoriesInterface {
 }
 
 export interface ProductsInterface{
-    id: number;
+    id?: number;
     title: string;
     price: number;
     description: string;
     images: string[];
     creationAt?: string;
     updatedAt?: string;
-    category: CategoriesInterface
+    categoryId: number;
+    category?: CategoriesInterface
 }
 
 export interface User{
