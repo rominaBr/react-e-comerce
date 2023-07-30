@@ -18,6 +18,12 @@ export interface ProductsInterface{
     category?: CategoriesInterface
 }
 
+export interface Product{
+    title: string;
+    price: number;
+    description: string;
+}
+
 export interface User{
     id?: number;
     email: string;
