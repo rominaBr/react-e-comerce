@@ -6,7 +6,7 @@ import { CategoriesInterface } from "../../../../interfaces/interfaces";
 import { useMutation} from "react-query"
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios"
-import "./styles.css"
+import "../styles.css"
 import Loader from "../../../loader/Loader";
 
 

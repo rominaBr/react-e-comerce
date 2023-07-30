@@ -4,7 +4,7 @@ import { useAuth } from "../../auth/useAuth";
 import { useMutation } from "react-query";
 import axios from "axios";
 import { API_URL } from "../../consts/consts";
-import "./styles.css"
+import "../styles.css"
 import { UserLoginData, UserLoginDataResponse } from "../../interfaces/interfaces";
 
 function Login(){
