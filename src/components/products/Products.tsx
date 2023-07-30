@@ -74,22 +74,22 @@ function Products(){
                 {productStatus === "success" &&                
                     products 
                                        
-                    .filter((prod: ProductsInterface) => {
-                        
-                        if (selectedCategories.length > 0 && !selectedCategories.includes(String(prod.categoryId))) {
+                    .filter((prod: ProductsInterface) => {                        
+                        if (selectedCategories.length > 0 && !selectedCategories.includes(String(prod.category?.id))) {
                           return false;
                         }
                         const productPrice = prod.price;
                         return productPrice >= priceRange.min && productPrice <= priceRange.max;
                     })                                          
-                    .map((prod: ProductsInterface) => {
+                    .map((prod: ProductsInterface) => {                        
                         return(
-                            <div key={prod.id}>
+                            <div key={prod.id}>                                
                                 <CardProduct id={prod.id}
                                     title={prod.title}
                                     price={prod.price}
                                     description={prod.description}
-                                    images={prod.images} categoryId={prod.categoryId} />
+                                    images={prod.images}
+                                    category={prod.category} />
                             </div>
                         )
                     })                                            
