@@ -14,7 +14,8 @@ function ProductsCategory(){
 
     const { data, status, error}: { data?: any, status: string, error: any } = useQuery(
         QUERY_KEY_PRODUCTS,
-        fetchProducts
+        () => fetchProducts("products")
+        
     )   
 
     return(
@@ -23,7 +24,7 @@ function ProductsCategory(){
             {status === "error" && <h1>Error: {error?.message}</h1>}      
             {status === "success" &&                
                 data                        
-                    .filter((prod: ProductsInterface) => prod.category.id === Number(id))
+                    .filter((prod: ProductsInterface) => prod.category?.id === Number(id))
                     
                     .map((prod: ProductsInterface) => {    
                                                     

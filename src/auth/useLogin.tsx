@@ -24,16 +24,17 @@ function useLogin() {
         return res.json();
       });
     },
-    {
+    {      
       onSuccess: (userData) => {
-        auth.login(userData, () => {
-          navigate(from, { replace: true });
-        });
+        if(auth?.login){
+          auth.login(userData, () => {
+            navigate(from, { replace: true });
+          });
+        }          
+        
       },
-    },
-    {
       onError: () => {
-        console.log("Usuario o clave incorrectos")
+        console.log("Usuario o clave incorrectos");
       },
     }
   );

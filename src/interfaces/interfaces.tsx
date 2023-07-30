@@ -1,5 +1,5 @@
 export interface CategoriesInterface {
-    id: number;
+    id?: number;
     name: string;
     image: string;
     creationAt?: string;
@@ -7,14 +7,21 @@ export interface CategoriesInterface {
 }
 
 export interface ProductsInterface{
-    id: number;
+    id?: number;
     title: string;
     price: number;
     description: string;
     images: string[];
     creationAt?: string;
     updatedAt?: string;
-    category: CategoriesInterface
+    categoryId?: number;
+    category?: CategoriesInterface
+}
+
+export interface Product{
+    title: string;
+    price: number;
+    description: string;
 }
 
 export interface User{
@@ -29,16 +36,16 @@ export interface User{
 }
 
 export interface UserLogeado{
-    data: User;
+    data?: User;
     isUserValid: boolean;
 }
 
 export interface AuthContextType {
-    login(userData: any, arg1: () => void): unknown;  
+    login?(userData: UserLoginData, arg1: () => void): unknown;  
     user: UserLoginDataResponse | null;
     signin: (user: UserLoginDataResponse, callback: VoidFunction) => void;
     signout: (callback: VoidFunction) => void;
-    userInfo: UserLogeado;
+    userInfo: UserLogeado | undefined;
     isLoading: boolean,
     isError: boolean,
 }

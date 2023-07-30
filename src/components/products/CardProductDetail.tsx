@@ -34,7 +34,7 @@ function CardProductDetail(prod: ProductsInterface){
             <div className="product-detail">
                 <div className="title">
                     <h1>{prod.title}</h1>
-                    <h3 className="categorie">{prod.category.name}</h3>
+                    <h3 className="categorie">{prod.category?.name}</h3>
                 </div>
                 
                 <h3>{prod.description}</h3>

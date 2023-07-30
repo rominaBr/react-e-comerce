@@ -24,19 +24,19 @@ function Nav(){
                     <li><Link to={"/categories"}>Categorías</Link></li>
                     <li><Link to={"/products"}>Productos</Link></li>
                     <li><Link to={"/cart-detail"}><i className="fa-solid fa-cart-shopping"></i></Link></li>
-                    {auth.user ? (
-                        <li>Bienvenido {auth.userInfo?.data.name}
+                    {auth?.user ? (
+                        <li>Bienvenido {auth?.userInfo?.data?.name}
                             <ul>
                                 <li>Submenú 1</li>
-                                {/*auth.userInfo.data.role == "admin" ? (
+                                {auth?.userInfo?.data?.role == "admin" ? (
                                     
                                     <>
-                                        <li>Categorías</li>
-                                        <li>Productos</li>
+                                        <li><Link to="/products/create">Productos</Link></li>
+                                        <li><Link to="/categories/create">Categorías</Link></li>
                                     </>
                                     
                                     
-                                ) : ("")*/}
+                                ) : ("")}
                                 
                                 <li><button
                                     onClick={() => {
