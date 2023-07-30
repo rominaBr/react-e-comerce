@@ -5,7 +5,7 @@ import { fetchCategories } from "../../../../functions/fetchData"
 import { CategoriesInterface, ProductsInterface } from "../../../../interfaces/interfaces"
 import Loader from "../../../loader/Loader"
 import axios from "axios"
-import "./styles.css"
+import "../styles.css"
 
 
 

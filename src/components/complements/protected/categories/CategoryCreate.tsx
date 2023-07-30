@@ -1,7 +1,7 @@
 import { CategoriesInterface } from "../../../../interfaces/interfaces";
 import { useMutation} from "react-query"
 import { useLocation, useNavigate } from "react-router-dom";
-import "./styles.css"
+import "../styles.css"
 import axios from "axios"
 import { API_URL, QUERY_KEY_CATEGORIES } from "../../../../consts/consts";
 
