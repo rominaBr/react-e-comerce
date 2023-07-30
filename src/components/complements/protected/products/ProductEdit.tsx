@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
-import { API_URL, QUERY_KEY_PRODUCTS } from "../../../../consts/consts";
-import { fetchProducts } from "../../../../functions/fetchData";
+import { API_URL, QUERY_KEY_CATEGORIES, QUERY_KEY_PRODUCTS } from "../../../../consts/consts";
+import { fetchCategories, fetchProducts } from "../../../../functions/fetchData";
 import { useQuery } from "react-query";
-import {  ProductsInterface } from "../../../../interfaces/interfaces";
+import {  CategoriesInterface, ProductsInterface } from "../../../../interfaces/interfaces";
 import { useMutation} from "react-query"
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -18,17 +18,21 @@ function ProductEdit(){
     const url = `products/${id}`
     
 
-    {/*const { data: categories, status: categoriesStatus, error: categoriesError}: { data?: any, status: string, error: any } = useQuery(
+    const { data: categories, status: categoriesStatus, error: categoriesError}: { data?: any, status: string, error: any } = useQuery(
         QUERY_KEY_CATEGORIES,
         fetchCategories
-    ) */}
+    )
     
+    
+
     const {data,status, error}:
     {data: any, status: string, error: any} = 
     useQuery([QUERY_KEY_PRODUCTS, id], () => { 
                
         return fetchProducts(url);
     });
+
+    
 
     const [title, setTitle] = useState<string>(data?.title || "");
     const [price, setPrice] = useState<number>(data?.price || 0);
@@ -65,7 +69,7 @@ function ProductEdit(){
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        
+                
         const newProduct: ProductsInterface = {
             title,
             price,
@@ -73,7 +77,6 @@ function ProductEdit(){
             images,
             categoryId,            
         };
-        
 
         editProductMutation.mutate(newProduct);
 
@@ -91,7 +94,7 @@ function ProductEdit(){
                         <input type="number" name="price" defaultValue={data.price} onChange={(e) => setPrice(parseInt(e.target.value))} required/>
                         <input type="text" name="description" defaultValue={data.description} onChange={(e) => setDescription(e.target.value)} required/>
                         
-                     {/*  <select name="categoryId" defaultValue={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))}>  
+                       <select name="categoryId" defaultValue={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))}>  
                                                    
                             {categoriesStatus === "loading" && <Loader/>}                
                             {categoriesStatus  === "error" && <h1>Error: {categoriesError?.message}</h1>}      
@@ -101,8 +104,8 @@ function ProductEdit(){
                                         <option value={cat.id}>{cat.name}</option>                        
                                     )
                             })}
-                        </select>     */}
-                                      
+                        </select>     
+                                
                         {data.images.map((i: string, index: number) => {
                             return (
                                 <input
@@ -117,8 +120,7 @@ function ProductEdit(){
                                     }}
                                 required/>
                             );
-                        })}
-                        
+                        })}                        
                          
                         <button>Editar</button>
                     </>

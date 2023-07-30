@@ -6,11 +6,11 @@ function RequireAdmin({ children }: { children: JSX.Element }) {
   const auth = useAuth();
   const location = useLocation();
 
-  if (auth.isLoading) {
+  if (auth?.isLoading) {
     return null;
   }
 
-  if (auth.userInfo.isUserValid && auth.userInfo.data.role != "admin") {
+  if (auth?.userInfo?.isUserValid && auth?.userInfo?.data?.role != "admin") {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

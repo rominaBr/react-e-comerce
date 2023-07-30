@@ -14,7 +14,7 @@ export interface ProductsInterface{
     images: string[];
     creationAt?: string;
     updatedAt?: string;
-    categoryId: number;
+    categoryId?: number;
     category?: CategoriesInterface
 }
 
@@ -30,16 +30,16 @@ export interface User{
 }
 
 export interface UserLogeado{
-    data: User;
+    data?: User;
     isUserValid: boolean;
 }
 
 export interface AuthContextType {
-    login(userData: any, arg1: () => void): unknown;  
+    login?(userData: UserLoginData, arg1: () => void): unknown;  
     user: UserLoginDataResponse | null;
     signin: (user: UserLoginDataResponse, callback: VoidFunction) => void;
     signout: (callback: VoidFunction) => void;
-    userInfo: UserLogeado;
+    userInfo: UserLogeado | undefined;
     isLoading: boolean,
     isError: boolean,
 }

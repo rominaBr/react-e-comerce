@@ -29,8 +29,8 @@ function CardCategorie(categories: CategoriesInterface){
             <div className="card">
                 <img src={categories.image} alt="category" />
             </div>
-            {auth.user ? (
-                auth.userInfo?.data.role == "admin" ? (
+            {auth?.user ? (
+                auth?.userInfo?.data?.role == "admin" ? (
                     <>
                         <button><Link to={`/categories/edit/${categories.id}`}>-</Link></button>
                         <button onClick={() => onDeleteCategory(categories.id)}>x</button>

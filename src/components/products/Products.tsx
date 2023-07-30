@@ -76,7 +76,7 @@ function Products(){
                                        
                     .filter((prod: ProductsInterface) => {
                         
-                        if (selectedCategories.length > 0 && !selectedCategories.includes(String(prod.category.id))) {
+                        if (selectedCategories.length > 0 && !selectedCategories.includes(String(prod.categoryId))) {
                           return false;
                         }
                         const productPrice = prod.price;
@@ -89,7 +89,7 @@ function Products(){
                                     title={prod.title}
                                     price={prod.price}
                                     description={prod.description}
-                                    images={prod.images} category={prod.category} />
+                                    images={prod.images} categoryId={prod.categoryId} />
                             </div>
                         )
                     })                                            

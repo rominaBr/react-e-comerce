@@ -2,12 +2,15 @@ import React from 'react';
 import { ACCESS_TOKEN, QUERY_KEY_USER } from '../consts/consts';
 import { useQuery } from 'react-query';
 import { fetchUser } from '../functions/fetchData';
-import { AuthContextType, UserLoginDataResponse } from '../interfaces/interfaces';
+import { AuthContextType, UserLogeado, UserLoginDataResponse } from '../interfaces/interfaces';
 
 
-export const AuthContext = React.createContext<AuthContextType>(null!);
+export const AuthContext = React.createContext<AuthContextType | null>(null);
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
+  
+  
+
   const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
   const [user, setUser] = React.useState<UserLoginDataResponse | null>(
@@ -18,13 +21,13 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     data: userInfo,
     isLoading,
     isError,
-  }  = useQuery(
+  }  = useQuery<UserLogeado>(
     [QUERY_KEY_USER],
     () => fetchUser(user?.access_token),
     {
       enabled: !!user?.access_token,
     }
-  );  
+  );   
  
 
   const signin = (newUser: UserLoginDataResponse, callback: VoidFunction) => {
@@ -38,7 +41,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signout = (callback: VoidFunction) => {
     setUser(null);
-    localStorage.getItem(ACCESS_TOKEN)
+    localStorage.removeItem(ACCESS_TOKEN)
     return callback();
   };
 

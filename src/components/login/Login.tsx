@@ -3,9 +3,9 @@ import "../styles.css"
 import { useAuth } from "../../auth/useAuth";
 import { useMutation } from "react-query";
 import axios from "axios";
-import { UserLoginData, UserLoginDataResponse } from "../../auth/AuthContext";
 import { API_URL } from "../../consts/consts";
 import "./styles.css"
+import { UserLoginData, UserLoginDataResponse } from "../../interfaces/interfaces";
 
 function Login(){
 
@@ -26,7 +26,7 @@ function Login(){
                     access_token: data.data.access_token,
                 };
                 console.log(userData);
-                auth.signin(userData, () => {
+                auth?.signin(userData, () => {
                     navigate(from, { replace: true});
                 });
             },

@@ -25,7 +25,7 @@ function Register(){
                     //email: data.data.email,
                     access_token: data.data.access_token,
                 };
-                auth.signin(userData, () => {
+                auth?.signin(userData, () => {
                     navigate(from, { replace: true});
                 });
             },

@@ -28,6 +28,7 @@ export const fetchCategory = async (url: string) => {
 
 }
 
+
 export const fetchProducts = async (url: string) => {
     const res = await fetch(`${API_URL}/${url}`)
     const json = await res.json();

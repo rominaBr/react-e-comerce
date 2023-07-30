@@ -4,22 +4,31 @@ import { ProductsInterface } from "../../interfaces/interfaces";
 import { useAuth } from "../../auth/useAuth";
 import { API_URL } from "../../consts/consts";
 import axios from "axios"
+import { useMutation } from "react-query";
 
 
 function CardProduct(products: ProductsInterface){       
 
-    const auth = useAuth()    
+    const auth = useAuth();    
 
-    const  onDeleteProduct = async (productId: number) => {
-        try {
-          
-          await axios.delete(`${API_URL}/products/${productId}`);
-          window.location.reload();
-          
-        } catch (error) {
-          console.error("Error al eliminar el producto", error);
+
+
+    const deleteProductMutation  = useMutation(
+        (id: number) => {
+            return axios.delete(`${API_URL}/products/${id}`)
+        },
+        {
+            onSuccess: () => {
+                window.location.reload();
+            }
         }
-    };
+    );
+
+    function onDeleteProduct(id: number){
+        if(id) {
+            deleteProductMutation.mutate(id);
+        }        
+    }
 
     return(
         <>            
@@ -58,14 +67,16 @@ function CardProduct(products: ProductsInterface){
                         </div>           
                     </div>
                     <div className="description-product">
-                        {auth.user ? (
-                            auth.userInfo?.data.role == "admin" ? (
+                        
+                        {auth?.user ? (
+                            auth.userInfo?.data?.role == "admin" ? (
                                 <>
                                     <button><Link to={`/products/edit/${products.id}`}>-</Link></button>
-                                    <button onClick={() => onDeleteProduct(products.id)}>x</button>
+                                    
+                                    <button onClick={() => onDeleteProduct(products.id || 0)}>x</button>
                                 </>
-                            ):("")
-                            ):("")
+                            ):null
+                            ):null
                         }
                         
                         <Link to={`/products/${products.id}`}>                            
