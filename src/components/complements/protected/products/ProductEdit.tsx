@@ -16,9 +16,6 @@ function ProductEdit(){
     const {id} = useParams();
 
     const url = `products/${id}`  
-    
-    
-    
 
     const {data,status, error}:
     {data: any, status: string, error: any} = 
@@ -26,8 +23,6 @@ function ProductEdit(){
                
         return fetchProducts(url);
     });
-
-    
 
     const [title, setTitle] = useState<string>(data?.title || "");
     const [price, setPrice] = useState<number>(data?.price || 0);
@@ -74,23 +69,41 @@ function ProductEdit(){
     }
 
     return(
-        <div className="container-categories-create">
-            <form onSubmit={handleSubmit}>
-                {status === "loading" && <Loader/>}                
-                {status === "error" && <h1>Error: {error.message}</h1>}      
-                {status === "success" && 
-                    <>
-                        <input type="text" name="title" defaultValue={data.title} onChange={(e) => setTitle(e.target.value) } required/>
-                                                
-                        <input type="number" name="price" defaultValue={data.price} onChange={(e) => setPrice(parseInt(e.target.value))} required/>
-                        <input type="text" name="description" defaultValue={data.description} onChange={(e) => setDescription(e.target.value)} required/>
-                        
+        <div className="container">
+            <div className="form">
+                <div className="wrapper-form">
+                    <form onSubmit={handleSubmit}>
+                        {status === "loading" && <Loader/>}                
+                        {status === "error" && <h1>Error: {error.message}</h1>}      
+                        {status === "success" && 
+                            <>
+                                <div className="input-box">
+                                    <input type="text" name="title" defaultValue={data.title} onChange={(e) =>
+                                        setTitle(e.target.value) } required/>
+                                    <i className="fa-solid fa-pen-to-square"></i>
+                                </div>
+                                
+                                <div className="input-box">
+                                <input type="number" name="price" defaultValue={data.price} onChange={(e) => 
+                                    setPrice(parseInt(e.target.value))} required/>
+                                    <i className="fa-solid fa-dollar-sign"></i>
+                                </div>                        
                                
-                         
-                        <button>Editar</button>
-                    </>
-                }
-            </form>
+                                <div className="input-box">
+                                <input type="text" name="description" defaultValue={data.description} onChange={(e) => 
+                                    setDescription(e.target.value)} required/>
+                                    <i className="fa-solid fa-list"></i>
+                                </div>                               
+                                    
+                                
+                                <button className="btn">Editar</button>
+                            </>
+                        }
+                    </form>
+                </div>
+               
+            </div>
+            
         </div>
     )
 }

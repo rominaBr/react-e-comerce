@@ -56,17 +56,28 @@ function CategoryEdit(){
 
     return(
         <div className="container-categories-create">
-            <form onSubmit={handleSubmit}>
-                {status === "loading" && <Loader/>}                
-                {status === "error" && <h1>Error: {error.message}</h1>}      
-                {status === "success" && 
-                    <>
-                        <input type="text" name="name" defaultValue={data?.name} />
-                        <input type="text" name="image" defaultValue={data?.image}  />
-                        <button>Editar</button>
-                    </>
-                }
-            </form>
+            <div className="container">
+                <div className="wrapper-form">
+                    <form onSubmit={handleSubmit}>
+                        {status === "loading" && <Loader/>}                
+                        {status === "error" && <h1>Error: {error.message}</h1>}      
+                        {status === "success" && 
+                            <>
+                                <div className="input-box">
+                                    <input type="text" name="name" defaultValue={data?.name} />
+                                    <i className="fa-solid fa-pen-to-square"></i>
+                                </div>
+                                <div className="input-box">
+                                    <input type="text" name="image" defaultValue={data?.image}  />
+                                    <i className="fa-solid fa-image"></i>
+                                </div>                                
+                                <button className="btn">Editar</button>
+                            </>
+                        }
+                    </form>
+                </div>                
+            </div>
+            
         </div>
     )
 }
