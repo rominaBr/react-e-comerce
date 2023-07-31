@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { CartContextType } from "../../interfaces/interfaces";
+import { CartContextType, CartItem } from "../../interfaces/interfaces";
 
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -13,16 +13,22 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cartItems, setCartItems] = useState<number>(0);
+    const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const updateCartItems = (items: number) => {
-    setCartItems(items);
-  };
+    const updateCartItems = (items: CartItem[]) => {
+        setCartItems(items);
+    };
 
-  const value = {
-    cartItems,
-    updateCartItems,
-  };
+    const removeCartItem = (itemId: number) => {
+        const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+        setCartItems(updatedCartItems);
+    };
+    
+    const value = {
+        cartItems,
+        updateCartItems,
+        removeCartItem
+    };
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+    return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

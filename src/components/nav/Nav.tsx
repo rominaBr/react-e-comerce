@@ -27,7 +27,7 @@ function Nav(){
                     <li><Link to={"/products"}>Productos</Link></li>
                     <li><Link to={"/cart-detail"}>
                         <i className="fa-solid fa-cart-shopping"></i>
-                        <span>{cartContext.cartItems}</span>
+                        <span>{cartContext.cartItems.length}</span>
                     </Link></li>
                     {auth?.user ? (
                         <li>Bienvenido {auth?.userInfo?.data?.name}

@@ -59,8 +59,16 @@ export interface UserLoginDataResponse {
     access_token: string;
 }
 
+export interface CartItem {    
+    id?: number;
+    title: string;
+    price: number;
+    quantity: number;    
+}
+
 export interface CartContextType {
-    cartItems: number;
-    updateCartItems: (items: number) => void;
+    cartItems: CartItem[];
+    updateCartItems: (items: CartItem[]) => void;
+    removeCartItem: (itemId: number) => void;
 }
   
