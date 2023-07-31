@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./nav.css"
 import { useAuth } from "../../auth/useAuth";
+import { useCart } from "../cart/CartContext";
 
 
 function Nav(){
     const auth = useAuth();
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
+    const cartContext = useCart();    
    
     return(
         <nav className="menu">
@@ -23,7 +25,10 @@ function Nav(){
                     <li><Link to={"/"}>Inicio</Link></li>
                     <li><Link to={"/categories"}>Categorías</Link></li>
                     <li><Link to={"/products"}>Productos</Link></li>
-                    <li><Link to={"/cart-detail"}><i className="fa-solid fa-cart-shopping"></i></Link></li>
+                    <li><Link to={"/cart-detail"}>
+                        <i className="fa-solid fa-cart-shopping"></i>
+                        <span>{cartContext.cartItems}</span>
+                    </Link></li>
                     {auth?.user ? (
                         <li>Bienvenido {auth?.userInfo?.data?.name}
                             <ul>

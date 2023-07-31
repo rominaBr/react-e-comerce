@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ProductsInterface } from "../../interfaces/interfaces";
+import { useCart } from "../cart/CartContext";
 
 
 
@@ -9,17 +10,21 @@ function CardProductDetail(prod: ProductsInterface){
     const [cant, setCant] = useState(0);
     const [price, setPrice] = useState(0);
     
-    
+    const cartContext = useCart();
 
     const addToCart = () =>{
-        setPrice(price+prod.price)
-        setCant(cant+1)
+        setPrice(price+prod.price);
+        setCant(cant+1);
+        cartContext.updateCartItems(cartContext.cartItems + 1);
+
     }
 
     const substarctToCart = () =>{
         if(cant > 0){
-            setPrice(price-prod.price)
-            setCant(cant-1)
+            setPrice(price-prod.price);
+            setCant(cant-1);
+            cartContext.updateCartItems(cartContext.cartItems - 1);
+
         }
     }
 

@@ -12,6 +12,7 @@ function ProductDetail(){
     const {id} = useParams();
     const url = `products/${id}`
     
+    
 
     const {data,status, error}:
     {data: any, status: string, error: any} = 
