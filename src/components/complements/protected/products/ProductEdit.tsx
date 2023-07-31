@@ -33,8 +33,7 @@ function ProductEdit(){
         if (data) {
           setTitle(data.title);
           setPrice(data.price);
-          setDescription(data.description);      
-          
+          setDescription(data.description);     
         }
     });
      
