@@ -63,7 +63,8 @@ export interface CartItem {
     id?: number;
     title: string;
     price: number;
-    quantity: number;    
+    quantity: number;  
+    image?: string;  
 }
 
 export interface CartContextType {

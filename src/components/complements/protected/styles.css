@@ -47,6 +47,19 @@
     color: #fff;
 }
 
+.input-box select{
+    width: 102%;
+    height: 110%;
+    background: black;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;    
+    color: white;
+    font-size: 16px;
+    padding: 5px 0px 5px 5px;
+}
+
 .input-box i{
     position: relative;
     right: -380px;

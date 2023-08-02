@@ -38,11 +38,23 @@ function CategoryCreate(){
     }
     
     return(
-        <form className="container-categories-create" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Nombre" required/>
-            <input type="url" name="image" id="" />
-            <button>Crear</button>
-        </form>
+        <div className="container">
+            <div className="wrapper-form">
+                <form onSubmit={handleSubmit}>
+                    <div className="input-box">
+                        <input type="text" name="name" placeholder="Nombre" required/>
+                        <i className="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div className="input-box">
+                        <input type="url" name="image" placeholder="URL Imagen" required/>
+                        <i className="fa-solid fa-image"></i>
+                    </div>
+                    
+                    <button className="btn">Crear</button>
+                </form>
+            </div>
+        </div>
+        
     )
 }
 

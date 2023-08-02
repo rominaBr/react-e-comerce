@@ -84,7 +84,7 @@ function ProductEdit(){
                                 </div>
                                 
                                 <div className="input-box">
-                                <input type="number" name="price" defaultValue={data.price} onChange={(e) => 
+                                <input type="number" name="price" defaultValue={data.price} min={0} onChange={(e) => 
                                     setPrice(parseInt(e.target.value))} required/>
                                     <i className="fa-solid fa-dollar-sign"></i>
                                 </div>                        

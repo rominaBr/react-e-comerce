@@ -188,3 +188,20 @@ nav .icon-bars .line{
     display:block;
 }
 
+nav .list button{
+    display: block;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    width: 150px;
+    border: none;
+}
+
+nav .list button:hover{
+    border-bottom: 4px solid #6759f9;
+    cursor: pointer;
+}

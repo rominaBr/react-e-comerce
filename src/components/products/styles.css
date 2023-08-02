@@ -199,6 +199,11 @@ input[id$="-2"]:checked ~ .pagination .pagination-item[for$="-2"]{
     border-radius: 5px;
     height: 30px;
     width: 30px;
+    
+}
+
+button{
+    cursor: pointer;
 }
 
 .trash{
@@ -206,6 +211,7 @@ input[id$="-2"]:checked ~ .pagination .pagination-item[for$="-2"]{
     width: 200px;
     flex-wrap: wrap;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 .categorie{
@@ -278,4 +284,17 @@ input[type="checkbox"]:checked +  label:before{
     display: flex;
     align-items: flex-start;
     padding-left: 20px;
+}
+
+.btn-add{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 15px;
+    width: 200px;
+}
+
+.btn-delete{
+    cursor:pointer;
 }

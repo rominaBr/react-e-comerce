@@ -32,7 +32,7 @@ function Nav(){
                     {auth?.user ? (
                         <li>Bienvenido {auth?.userInfo?.data?.name}
                             <ul>
-                                <li>Submenú 1</li>
+                                <li><Link to="">Submenú 1</Link></li>
                                 {auth?.userInfo?.data?.role == "admin" ? (
                                     
                                     <>

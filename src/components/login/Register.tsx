@@ -60,7 +60,7 @@ function Register(){
                     </div>
                     
                     <div className="input-box">
-                        <input name="password" type="password" placeholder="Contraseña" required/>
+                        <input name="password" type="password" placeholder="Contraseña" minLength={4} required/>
                         <i className="fa-solid fa-lock"></i>
                     </div>
                     

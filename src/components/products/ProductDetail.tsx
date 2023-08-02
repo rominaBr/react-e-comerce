@@ -10,7 +10,7 @@ import { fetchProducts } from "../../functions/fetchData";
 function ProductDetail(){
 
     const {id} = useParams();
-    const url = `products/${id}`
+    const url = `products/${id}`;   
     
     
 

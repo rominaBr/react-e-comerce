@@ -1,0 +1,58 @@
+.container-cart{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.card-cart{
+    background: black;
+    color:white;
+    width: 700px;
+    height: 200px;
+    display: flex;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.card-cart img{
+    width: 60%;
+    height: 70%;
+    padding-left: 10px;
+    
+}
+
+.col-1{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.col-2{
+    width: 100vh;
+    font-size: large;
+}
+
+.cant-cart{
+    display: flex;
+    width: 353px;
+}
+
+.cant-cart button{
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    color:white;
+    background: black;
+    border-radius: 5px;
+    border-color: aliceblue;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.btn-trash{
+    margin-top: 18px;    
+}

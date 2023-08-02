@@ -17,8 +17,9 @@ function CardCategorie(categories: CategoriesInterface){
           await axios.delete(`${API_URL}/categories/${categoryId}`);
           window.location.reload();
           
-        } catch (error) {
+        } catch (error) {          
           console.error("Error al eliminar la categoría", error);
+          alert("No se puede eliminar esta categoría.");
         }
     };
 
@@ -32,8 +33,8 @@ function CardCategorie(categories: CategoriesInterface){
             {auth?.user ? (
                 auth?.userInfo?.data?.role == "admin" ? (
                     <>
-                        <button><Link to={`/categories/edit/${categories.id}`}>-</Link></button>
-                        <button onClick={() => onDeleteCategory(categories.id)}>x</button>
+                        <button><Link to={`/categories/edit/${categories.id}`}><i className="fa-solid fa-pen-to-square"></i></Link></button>
+                        <button className="btn-delete" onClick={() => onDeleteCategory(categories.id)}><i className="fa-solid fa-trash"></i></button>
                     </>
                 ):("")
             ):("")
