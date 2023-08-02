@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { ProductsInterface } from "../../interfaces/interfaces";
+import { CartItem, ProductsInterface } from "../../interfaces/interfaces";
+import { useCart } from "../cart/CartContext";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,19 +11,46 @@ function CardProductDetail(prod: ProductsInterface){
     const [cant, setCant] = useState(0);
     const [price, setPrice] = useState(0);
     
-    
+    const cartContext = useCart();
+    const navigate = useNavigate();
 
-    const addToCart = () =>{
-        setPrice(price+prod.price)
-        setCant(cant+1)
+    const add = () => { 
+        setPrice(price + prod.price);
+        setCant(cant + 1);
+    };
+
+    const addToCart = () => {
+      const existingItem = cartContext.cartItems.find(item => item.id === prod.id);
+      
+      if (existingItem) {        
+        existingItem.quantity += cant;
+        existingItem.price += price;
+
+      } else {
+        
+        const newProduct: CartItem = {
+          id: prod.id!,
+          title: prod.title,
+          price: prod.price,
+          quantity: cant, 
+          image: prod.images[0],
+        };         
+        cartContext.updateCartItems([...cartContext.cartItems, newProduct]);
+        
+      }
+      navigate("/cart-detail")
     }
+      
 
-    const substarctToCart = () =>{
-        if(cant > 0){
-            setPrice(price-prod.price)
-            setCant(cant-1)
+    const substarct = () => {
+        if (cant > 0) {
+          setPrice(price - prod.price);
+          setCant(cant - 1);  
+          
         }
+    
     }
+      
 
     const emptyCart = () => {
         setPrice(0);
@@ -50,14 +79,17 @@ function CardProductDetail(prod: ProductsInterface){
                 <div>
                     <h2>Precio: ${prod.price}</h2>
                     <div className="cant">
-                        <button onClick={substarctToCart}>-</button>
+                        <button onClick={substarct}>-</button>
                         {cant}
-                        <button onClick={addToCart}>+</button>
+                        <button onClick={add}>+</button>
                     </div> 
                     <div className="trash">
                         <h4>Total: ${price} <i className="fa-solid fa-trash" onClick={emptyCart}></i>
                         </h4> 
-                    </div>          
+                    </div>
+                    {cant > 0 ? (
+                        <button className="btn-add" onClick={addToCart}>Agregar al carrito</button>
+                    ) : ("") }    
                     
                 </div>
             </div>

@@ -71,9 +71,9 @@ function CardProduct(products: ProductsInterface){
                         {auth?.user ? (
                             auth.userInfo?.data?.role == "admin" ? (
                                 <>
-                                    <button><Link to={`/products/edit/${products.id}`}>-</Link></button>
+                                    <button><Link to={`/products/edit/${products.id}`}><i className="fa-solid fa-pen-to-square"></i></Link></button>
                                     
-                                    <button onClick={() => onDeleteProduct(products.id || 0)}>x</button>
+                                    <button className="btn-delete" onClick={() => onDeleteProduct(products.id || 0)}><i className="fa-solid fa-trash"></i></button>
                                 </>
                             ):null
                             ):null

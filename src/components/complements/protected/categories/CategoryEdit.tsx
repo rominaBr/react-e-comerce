@@ -55,7 +55,7 @@ function CategoryEdit(){
     }
 
     return(
-        <div className="container-categories-create">
+        
             <div className="container">
                 <div className="wrapper-form">
                     <form onSubmit={handleSubmit}>
@@ -64,11 +64,11 @@ function CategoryEdit(){
                         {status === "success" && 
                             <>
                                 <div className="input-box">
-                                    <input type="text" name="name" defaultValue={data?.name} />
+                                    <input type="text" name="name" defaultValue={data?.name} required/>
                                     <i className="fa-solid fa-pen-to-square"></i>
                                 </div>
                                 <div className="input-box">
-                                    <input type="text" name="image" defaultValue={data?.image}  />
+                                    <input type="text" name="image" defaultValue={data?.image}  required/>
                                     <i className="fa-solid fa-image"></i>
                                 </div>                                
                                 <button className="btn">Editar</button>
@@ -76,7 +76,7 @@ function CategoryEdit(){
                         }
                     </form>
                 </div>                
-            </div>
+            
             
         </div>
     )
