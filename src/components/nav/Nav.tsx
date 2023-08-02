@@ -8,6 +8,11 @@ function Nav(){
     const auth = useAuth();
     const navigate = useNavigate();
     const cartContext = useCart();    
+
+    const totalProductsInCart = cartContext.cartItems.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
    
     return(
         <nav className="menu">
@@ -27,7 +32,7 @@ function Nav(){
                     <li><Link to={"/products"}>Productos</Link></li>
                     <li><Link to={"/cart-detail"}>
                         <i className="fa-solid fa-cart-shopping"></i>
-                        <span>{cartContext.cartItems.length}</span>
+                        <span>{totalProductsInCart}</span>
                     </Link></li>
                     {auth?.user ? (
                         <li>Bienvenido {auth?.userInfo?.data?.name}
