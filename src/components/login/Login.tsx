@@ -21,14 +21,16 @@ function Login(){
         },
         {
             onSuccess: (data) => {
-                const userData: UserLoginDataResponse = {
-                    //email: data.data.email,
+                const userData: UserLoginDataResponse = {                    
                     access_token: data.data.access_token,
                 };
-                console.log(userData);
+                
                 auth?.signin(userData, () => {
                     navigate(from, { replace: true});
                 });
+            },
+            onError: (error) => {                
+                console.error("Error en el registro:", error);
             },
         }
     )

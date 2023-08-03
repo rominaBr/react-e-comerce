@@ -295,6 +295,19 @@ input[type="checkbox"]:checked +  label:before{
     width: 200px;
 }
 
-.btn-delete{
+
+.btn-edit-delete{
     cursor:pointer;
+    background: #000;
+    color:white;
+    border-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+.btn-edit-delete a{
+    color:white;
 }

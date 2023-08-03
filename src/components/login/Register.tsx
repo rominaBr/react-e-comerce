@@ -4,7 +4,7 @@ import { useAuth } from "../../auth/useAuth";
 import { useMutation } from "react-query";
 import { API_URL } from "../../consts/consts";
 import axios from "axios";
-import { User, UserLoginDataResponse } from "../../interfaces/interfaces";
+import { User, UserLoginData, UserLoginDataResponse } from "../../interfaces/interfaces";
 
 import "./styles.css"
 
@@ -15,22 +15,44 @@ function Register(){
     const auth = useAuth();
     const from = location.state?.from.pathname || "/";
 
-    const signinMutation = useMutation(
+    const registerMutation = useMutation(
         (data: User) => {
             return axios.post(`${API_URL}/users`, data)            
         },
         {
-            onSuccess: (data) => {
-                const userData: UserLoginDataResponse = {
-                    //email: data.data.email,
-                    access_token: data.data.access_token,
-                };
-                auth?.signin(userData, () => {
-                    navigate(from, { replace: true});
-                });
+            onSuccess: (data) => {                 
+                const email = data.data.email;
+                const password = data.data.password;
+                const userLogin: UserLoginData = { email , password }          
+                
+                loginAfterRegistration(userLogin);
+            },
+            onError: (error) => {                
+                console.error("Error en el registro:", error);
             },
         }
     )
+
+    async function loginAfterRegistration(data: UserLoginData) {
+        try {
+            
+            const response = await axios.post(`${API_URL}/auth/login`, data);
+            const accessToken = response.data.access_token;
+
+            console.log(accessToken);
+          
+            const userData: UserLoginDataResponse = {
+                access_token: accessToken,
+            };
+
+            auth?.signin(userData, () => {
+                navigate(from, { replace: true });
+            });
+            
+        } catch (error) {
+            console.error("Error during login after registration:", error);
+        }
+    }
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -43,10 +65,14 @@ function Register(){
         
         const newUser: User = {
             email, password, name, avatar,
-        };        
-        signinMutation.mutate(newUser);        
+        };  
+             
+        registerMutation.mutate(newUser);   
+        
+        
     }
 
+    
 
     return(
         <div className="container">
