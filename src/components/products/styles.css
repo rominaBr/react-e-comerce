@@ -38,11 +38,15 @@ a{
 
 
 .card-product img{
-    width: 250px;    
+    width: 250px;   
+    height: 250px; 
 }
 
 .description-product{
     font-size: medium; 
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .container-all{
@@ -147,12 +151,18 @@ input[id$="-2"]:checked ~ .pagination .pagination-item[for$="-2"]{
 }
 
 .container-card-product h3{
-    padding: 10px;
+    padding: 0px;
     font-size: 20px;
     color:white;
 }
 
+.detail{
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
 .container-card-product h4{
+    padding: 0px;
     color:white;
 }
 
@@ -311,3 +321,4 @@ input[type="checkbox"]:checked +  label:before{
 .btn-edit-delete a{
     color:white;
 }
+

@@ -1,0 +1,18 @@
+.card-profile{
+    background: black;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 700px;
+    margin-left: 450px;
+    border-radius: 15px;
+    color: white;
+    font-size: larger;
+}
+
+.image img{
+    width: 300px;
+    padding: 15px;
+    border-radius: 20px;
+}

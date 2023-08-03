@@ -17,6 +17,7 @@ import RequireAdmin from './auth/RequireAdmin'
 import CategoryCreate from './components/complements/protected/categories/CategoryCreate'
 import CategoryEdit from './components/complements/protected/categories/CategoryEdit'
 import ProductEdit from './components/complements/protected/products/ProductEdit'
+import Profile from './components/profile/Profile'
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,11 @@ function App() {
                     </RequireAdmin>                    
                   </RequireAuth>
                 } />  
+                <Route path="/profile" element ={
+                  <RequireAuth>
+                    <Profile/>
+                  </RequireAuth>
+                }/>
               </Route>          
             </Routes>
           </AuthProvider>
