@@ -29,9 +29,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
 
     const removeCartItem = (itemId: number) => {
+        
         const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
         setCartItems(updatedCartItems);
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updateCartItems))
+
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedCartItems))
+        
     };
     
     const value = {
