@@ -18,6 +18,7 @@ import CategoryCreate from './components/complements/protected/categories/Catego
 import CategoryEdit from './components/complements/protected/categories/CategoryEdit'
 import ProductEdit from './components/complements/protected/products/ProductEdit'
 import Profile from './components/profile/Profile'
+import Buy from './components/buy/Buy'
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,11 @@ function App() {
                 <Route path="/profile" element ={
                   <RequireAuth>
                     <Profile/>
+                  </RequireAuth>
+                }/>
+                <Route path="/buy" element ={
+                  <RequireAuth>
+                    <Buy/>
                   </RequireAuth>
                 }/>
               </Route>          
