@@ -25,7 +25,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     const updateCartItems = (items: CartItem[]) => {
         setCartItems(items);
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
     };
 
     const removeCartItem = (itemId: number) => {
@@ -33,14 +33,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
         setCartItems(updatedCartItems);
 
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedCartItems))
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedCartItems));
         
     };
+
+    const emptyCartItems = () => {
+      localStorage.removeItem(CART_STORAGE_KEY);
+      setCartItems([]);
+    }
     
     const value = {
         cartItems,
         updateCartItems,
-        removeCartItem
+        removeCartItem,
+        emptyCartItems
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

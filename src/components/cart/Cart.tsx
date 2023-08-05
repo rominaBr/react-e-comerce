@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import CardCart from "./CardCart";
 import "./cart.css"
 import { useCart } from "./CartContext";
+import EmptyCart from "./EmptyCart";
 
 
 function Cart(){
@@ -23,12 +24,12 @@ function Cart(){
                         )                       
                     })
                 ):(
-                    <div className="container">Carrito vacío</div>
+                    <div className="container"><EmptyCart/></div>
                 )}
             </div>
             {cartContext.cartItems.length > 0 && (
                 <div className="container">
-                    <Link to="/buy">Finalizar compra</Link>
+                    <Link to="/buy" onClick={cartContext.emptyCartItems}>Finalizar compra</Link>
                 </div>
             )}
         </>
