@@ -1,11 +1,11 @@
 import "./styles.css"
-import font from "../assets/ecommerce.jpg"
+import background from "../assets/ecommerce.jpg"
 import { Link } from "react-router-dom"
 
 function Home(){
     return(
         <>
-            <div style={{backgroundImage: `url(${font})`,
+            <div style={{backgroundImage: `url(${background})`,
                                                 backgroundRepeat: "no-repeat",
                                                 backgroundSize: "cover",
                                                 width: "100%",
