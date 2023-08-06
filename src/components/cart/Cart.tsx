@@ -4,14 +4,13 @@ import "./cart.css"
 import { useCart } from "./CartContext";
 import EmptyCart from "./EmptyCart";
 import { useAuth } from "../../auth/useAuth";
-import { useState } from "react";
 
 
 function Cart(){
     const cartContext = useCart();
     const auth = useAuth();
     const location = useLocation();
-    const [productsForPurchase, setProductsForPurchase] = useState([]);
+    
     
     
     return(
