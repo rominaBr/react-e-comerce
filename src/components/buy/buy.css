@@ -1,0 +1,19 @@
+.finished{
+    display: flex;
+    background: black;
+    margin: 5px 10px 10px 50px;
+    width: 800px;
+    color: white;
+    border-radius: 10px;
+}
+
+.finished .image img{    
+    width: 130px;
+    margin-right: 15px;
+}
+
+.container-finished{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

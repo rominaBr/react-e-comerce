@@ -57,7 +57,7 @@ function ProductCreate(){
         <div className="container">
             <div className="wrapper-form">
                 <form  onSubmit={handleSubmit}>
-            
+                    <h4>Crear Producto</h4>
                     <div className="input-box">
                         <input type="text" name="title" placeholder="Nombre" required/>
                         <i className="fa-solid fa-pen-to-square"></i>
@@ -95,7 +95,9 @@ function ProductCreate(){
                         <i className="fa-solid fa-image"></i>
                     </div>                
                
-                    <button className="btn" type="submit">Guardar</button>
+                    <button className="btn" type="submit">
+                        {createProductMutation.isLoading ? "Cargando..." : "Crear"}
+                    </button>
                 </form>  
             </div>
         </div>

@@ -41,6 +41,7 @@ function CategoryCreate(){
         <div className="container">
             <div className="wrapper-form">
                 <form onSubmit={handleSubmit}>
+                    <h4>Crear Categoría</h4>
                     <div className="input-box">
                         <input type="text" name="name" placeholder="Nombre" required/>
                         <i className="fa-solid fa-pen-to-square"></i>
@@ -50,7 +51,9 @@ function CategoryCreate(){
                         <i className="fa-solid fa-image"></i>
                     </div>
                     
-                    <button className="btn">Crear</button>
+                    <button className="btn">
+                        {createProductMutation.isLoading ? "Cargando... ": "Crear"}
+                    </button>
                 </form>
             </div>
         </div>

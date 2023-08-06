@@ -12,7 +12,9 @@ function Login(){
     const navigate = useNavigate();
     const location = useLocation();
     const auth = useAuth();
-    const from = location.state?.from.pathname || "/";
+    const from = location.state?.from.pathname || null;    
+    
+    
 
     const signinMutation = useMutation(
         (data: UserLoginData) => {
@@ -26,7 +28,13 @@ function Login(){
                 };
                 
                 auth?.signin(userData, () => {
-                    navigate(from, { replace: true});
+                    if(from) {
+                        navigate(from, { replace: true});
+                    }
+                    else{
+                        navigate("/", { replace: true});
+                    }
+                    
                 });
             },
             onError: (error) => {                

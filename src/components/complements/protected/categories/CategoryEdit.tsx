@@ -59,6 +59,7 @@ function CategoryEdit(){
             <div className="container">
                 <div className="wrapper-form">
                     <form onSubmit={handleSubmit}>
+                        <h4>Editar Categoría</h4>
                         {status === "loading" && <Loader/>}                
                         {status === "error" && <h1>Error: {error.message}</h1>}      
                         {status === "success" && 
@@ -71,7 +72,9 @@ function CategoryEdit(){
                                     <input type="text" name="image" defaultValue={data?.image}  required/>
                                     <i className="fa-solid fa-image"></i>
                                 </div>                                
-                                <button className="btn">Editar</button>
+                                <button className="btn">
+                                    {editCategoryMutation.isLoading ? "Cargando..." : "Editar"}
+                                </button>
                             </>
                         }
                     </form>
