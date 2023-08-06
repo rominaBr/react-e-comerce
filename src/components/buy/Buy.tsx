@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { CartItem } from "../../interfaces/interfaces";
 import "./buy.css"
-import { useState } from "react";
 
 
 function Buy (){
