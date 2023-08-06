@@ -37,7 +37,7 @@ function Nav(){
                     {auth?.user ? (
                         <li>Bienvenido {auth?.userInfo?.data?.name}
                             <ul>
-                                <li><Link to="">Submenú 1</Link></li>
+                                <li><Link to="/profile">Perfil</Link></li>
                                 {auth?.userInfo?.data?.role == "admin" ? (
                                     
                                     <>

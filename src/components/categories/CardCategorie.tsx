@@ -33,8 +33,8 @@ function CardCategorie(categories: CategoriesInterface){
             {auth?.user ? (
                 auth?.userInfo?.data?.role == "admin" ? (
                     <>
-                        <button><Link to={`/categories/edit/${categories.id}`}><i className="fa-solid fa-pen-to-square"></i></Link></button>
-                        <button className="btn-delete" onClick={() => onDeleteCategory(categories.id)}><i className="fa-solid fa-trash"></i></button>
+                        <button className="btn-edit-delete"><Link to={`/categories/edit/${categories.id}`}><i className="fa-solid fa-pen-to-square"></i></Link></button>
+                        <button className="btn-edit-delete" onClick={() => onDeleteCategory(categories.id)}><i className="fa-solid fa-trash"></i></button>
                     </>
                 ):("")
             ):("")

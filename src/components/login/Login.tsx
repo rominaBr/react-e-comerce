@@ -12,7 +12,9 @@ function Login(){
     const navigate = useNavigate();
     const location = useLocation();
     const auth = useAuth();
-    const from = location.state?.from.pathname || "/";
+    const from = location.state?.from.pathname || null;    
+    
+    
 
     const signinMutation = useMutation(
         (data: UserLoginData) => {
@@ -21,14 +23,22 @@ function Login(){
         },
         {
             onSuccess: (data) => {
-                const userData: UserLoginDataResponse = {
-                    //email: data.data.email,
+                const userData: UserLoginDataResponse = {                    
                     access_token: data.data.access_token,
                 };
-                console.log(userData);
+                
                 auth?.signin(userData, () => {
-                    navigate(from, { replace: true});
+                    if(from) {
+                        navigate(from, { replace: true});
+                    }
+                    else{
+                        navigate("/", { replace: true});
+                    }
+                    
                 });
+            },
+            onError: (error) => {                
+                console.error("Error en el registro:", error);
             },
         }
     )

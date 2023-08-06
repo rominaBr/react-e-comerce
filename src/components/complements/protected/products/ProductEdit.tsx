@@ -70,9 +70,10 @@ function ProductEdit(){
 
     return(
         <div className="container">
-            <div className="form">
+            <div className="form">                
                 <div className="wrapper-form">
                     <form onSubmit={handleSubmit}>
+                        <h4>Editar Producto</h4>
                         {status === "loading" && <Loader/>}                
                         {status === "error" && <h1>Error: {error.message}</h1>}      
                         {status === "success" && 
@@ -96,7 +97,9 @@ function ProductEdit(){
                                 </div>                               
                                     
                                 
-                                <button className="btn">Editar</button>
+                                <button className="btn">
+                                    {editProductMutation.isLoading ? "Cargando..." : "Editar"}
+                                </button>
                             </>
                         }
                     </form>

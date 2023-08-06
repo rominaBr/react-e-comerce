@@ -71,5 +71,6 @@ export interface CartContextType {
     cartItems: CartItem[];
     updateCartItems: (items: CartItem[]) => void;
     removeCartItem: (itemId: number) => void;
+    emptyCartItems: () => void;
 }
   
